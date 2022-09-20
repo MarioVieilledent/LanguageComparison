@@ -1,0 +1,4 @@
+/rust/target
+/display/mandelbrot
+*.exe
+*zip
