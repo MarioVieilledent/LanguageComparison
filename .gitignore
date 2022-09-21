@@ -1,6 +1,7 @@
 /display/mandelbrot
 
 /rust/target
+/node.js/node_modules
 
 *.exe
 *zip
