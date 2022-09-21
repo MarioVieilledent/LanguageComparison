@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-const WIDTH uint64 = 2_000
-const HEIGHT uint64 = 2_000
+const WIDTH uint64 = 2000
+const HEIGHT uint64 = 2000
 
 func main() {
 	start := time.Now()

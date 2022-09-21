@@ -1,7 +1,6 @@
 /display/mandelbrot
 
 /rust/target
-/java/bin
 
 *.exe
 *zip

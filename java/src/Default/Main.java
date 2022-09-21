@@ -1,9 +1,4 @@
-package java;
-
-import java.util.Arrays;
-import com.google.gson.Gson;
-import java.io.FileWriter;
-import java.io.IOException;
+package Default;
 
 public class Main {
 
@@ -14,12 +9,7 @@ public class Main {
 		long start = System.nanoTime();
 		int[][] plot = Main.mandelbrot();
 		long elapsed = System.nanoTime() - start;
-		System.out.println("Time elapsed - Writing file: " + elapsed);
-
-		start = System.nanoTime();
-		Main.saveResults(plot);
-		elapsed = System.nanoTime() - start;
-		System.out.println("Time elapsed - Writing file: " + elapsed);
+		System.out.println("Time elapsed - Mandlebrot: " + elapsed);
 	}
 
 	public static int[][] mandelbrot() {
@@ -33,11 +23,7 @@ public class Main {
 		double X_SLOPE = (X_SCALE_MAX - X_SCALE_MIN) / (double) Main.WIDTH;
 		double Y_SLOPE = (Y_SCALE_MAX - Y_SCALE_MIN) / (double) Main.HEIGHT;
 
-		System.out.println(X_SLOPE);
-		System.out.println(Y_SLOPE);
-
-		int[][] plot = {};
-		Arrays.fill(plot, 0);
+		int[][] plot = new int[Main.HEIGHT][Main.WIDTH];
 
 		for (int py = 0; py < (int) Main.HEIGHT; py++) {
 			for (int px = 0; px < (int) Main.WIDTH; px++) {
@@ -58,19 +44,6 @@ public class Main {
 			}
 		}
 		return plot;
-	}
-
-	public static void saveResults(int[][] plot) {
-		Gson gson = new Gson();
-		String data = gson.toJson(plot);
-		try {
-			FileWriter myWriter = new FileWriter("../display/mandelbrot/java.json");
-			myWriter.write(data);
-			myWriter.close();
-		} catch (IOException e) {
-			System.out.print("Error writing the file: ");
-			e.printStackTrace();
-		}
 	}
 
 }

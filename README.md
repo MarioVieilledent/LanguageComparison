@@ -51,14 +51,14 @@ Then I write down performances in a result file.
 
 Incoming.
 
-| Language | min time Mandelbrot | max time Mandelbrot | **average time Mandelbrot** | min time write file | max time write file | **average time write file** | **size of compiled executable (kb)** | notes |
+| Language | MIN time Mandel. | MAX time Mandel. | **AVG time Mandel.** | MIN time write file | MAX time write file | **AVG time write file** | **Size of compiled exe. (kb)** | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Rust | 0.429 | 3.078 | **2.220** | 0.465 | 3.009 | **1.394** | **173** | Long time to dev and debug |
 | Go | 0.185 | 2.877 | **2.136** | 0.135 | 2.600 | **0.633** | **1516** | Very short dev time |
+| Java | 2.739 | 2.881 | **2.836** | - | - | - | - | Lot of various issues |
 | Javascript on chromium | ... | ... | ... | ... | ... | ... | - | ... |
 | Javascript on node.js | ... | ... | ... | ... | ... | ... | - | ... |
 | Python | ... | ... | ... | ... | ... | ... | - | ... |
-| Java | ... | ... | ... | ... | ... | ... | ... | Can't execute, don't know why |
 | C | ... | ... | ... | ... | ... | ... | ... | ... | 
 | C++ | ... | ... | ... | ... | ... | ... | ... | ... | 
 | C# | ... | ... | ... | ... | ... | ... | ... | ... | 
@@ -175,3 +175,50 @@ func mandelbrot() (plot [HEIGHT][WIDTH]uint64) {
 	return
 }
 ```
+
+### Java
+
+I used Eclipse IDE for this part.
+
+> `cd java/bin/java`
+
+> `java -jar "myJarFile.jar"`
+
+```java
+public static int[][] mandelbrot() {
+		int MAX_ITER = 1000;
+
+		double X_SCALE_MIN = -2.0;
+		double X_SCALE_MAX = 1.0;
+		double Y_SCALE_MIN = -1.5;
+		double Y_SCALE_MAX = 1.5;
+
+		double X_SLOPE = (X_SCALE_MAX - X_SCALE_MIN) / (double) Main.WIDTH;
+		double Y_SLOPE = (Y_SCALE_MAX - Y_SCALE_MIN) / (double) Main.HEIGHT;
+
+		int[][] plot = new int[Main.HEIGHT][Main.WIDTH];
+
+		for (int py = 0; py < (int) Main.HEIGHT; py++) {
+			for (int px = 0; px < (int) Main.WIDTH; px++) {
+				double x0 = X_SLOPE * (double) px + X_SCALE_MIN;
+				double y0 = Y_SLOPE * (double) py + Y_SCALE_MIN;
+				double x = 0.0;
+				double y = 0.0;
+				int iteration = 0;
+
+				while (x * x + y * y <= 4.0 && iteration < MAX_ITER) {
+					double x_temp = x * x - y * y + x0;
+					y = 2.0 * x * y + y0;
+					x = x_temp;
+					iteration++;
+				}
+
+				plot[py][px] = iteration;
+			}
+		}
+		return plot;
+	}
+```
+
+### Python
+

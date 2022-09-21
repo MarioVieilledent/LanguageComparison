@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author mario
+ *
+ */
+module java {
+}
