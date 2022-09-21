@@ -1,5 +1,8 @@
 use std::{fs, time::Instant};
 
+const WIDTH: usize = 2_000;
+const HEIGHT: usize = 2_000;
+
 fn main() {
     let start: Instant = Instant::now();
     let plot: Vec<Vec<usize>> = mandlebrot();
@@ -13,8 +16,6 @@ fn main() {
 }
 
 fn mandlebrot() -> Vec<Vec<usize>> {
-    const WIDTH: usize = 2_000;
-    const HEIGHT: usize = 2_000;
     const MAX_ITER: usize = 1000;
 
     const X_SCALE_MIN: f64 = -2.0;
@@ -25,10 +26,9 @@ fn mandlebrot() -> Vec<Vec<usize>> {
     const X_SLOPE: f64 = (X_SCALE_MAX - X_SCALE_MIN) / WIDTH as f64;
     const Y_SLOPE: f64 = (Y_SCALE_MAX - Y_SCALE_MIN) / HEIGHT as f64;
 
-    dbg!(X_SLOPE);
-    dbg!(Y_SLOPE);
+    // dbg!(X_SLOPE);
+    // dbg!(Y_SLOPE);
 
-    // let mut plot: [[usize; WIDTH]; HEIGHT] = [[0; WIDTH]; HEIGHT];
     let mut plot: Vec<Vec<usize>> = vec![vec![0; WIDTH]; HEIGHT];
 
     for py in 0..HEIGHT {

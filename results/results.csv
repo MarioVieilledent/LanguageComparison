@@ -1,0 +1,11 @@
+language;desc;rust;go;
+mandelbrot-1;print-slope;3077775000;2587064300;
+mandelbrot-2;print-slope;2636967900;2518735300;
+mandelbrot-3;print-slope;2608806800;2877337400;
+mandelbrot-4;no-print;2345935400;2512157700;
+mandelbrot-5;no-print;428645200;184977000;
+write-file-1;print-slope;3008847800;135650100;
+write-file-2;print-slope;473499600;134891700;
+write-file-3;print-slope;567913300;143700400;
+write-file-4;no-print;2453581500;2599558200;
+write-file-5;no-print;464831800;150474400;
