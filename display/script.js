@@ -13,7 +13,7 @@ let slope = 255 / maxIter;
 let a = -0.00284;
 let b = 3.142;
 
-fetch("mandelbrot/go.json")
+fetch("mandelbrot/javascript.json")
     .then(res => res.json())
     .then(data => {
         h = data.length;

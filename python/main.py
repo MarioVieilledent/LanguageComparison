@@ -1,6 +1,5 @@
 import time
 
-
 WIDTH = 2000
 HEIGHT = 2000
 
@@ -9,41 +8,43 @@ def main():
     start = time.time()
     plot = mandelbrot()
     elapsed = time.time() - start
-    print('Time elapsed - Mandlebrot:' + elapsed)
+    print('Time elapsed - Mandlebrot:')
+    print(elapsed)
 
 
 def mandelbrot():
-    const MAX_ITER uint64 = 1000
+    MAX_ITER = 1000
 
-    const X_SCALE_MIN float64 = -2.0
-    const X_SCALE_MAX float64 = 1.0
-    const Y_SCALE_MIN float64 = -1.5
-    const Y_SCALE_MAX float64 = 1.5
+    X_SCALE_MIN = -2.0
+    X_SCALE_MAX = 1.0
+    Y_SCALE_MIN = -1.5
+    Y_SCALE_MAX = 1.5
 
-    const X_SLOPE float64 = (X_SCALE_MAX - X_SCALE_MIN) / float64(WIDTH)
-    const Y_SLOPE float64 = (Y_SCALE_MAX - Y_SCALE_MIN) / float64(HEIGHT)
+    X_SLOPE = (X_SCALE_MAX - X_SCALE_MIN) / WIDTH
+    Y_SLOPE = (Y_SCALE_MAX - Y_SCALE_MIN) / HEIGHT
 
-    // fmt.Println(X_SLOPE)
-    // fmt.Println(Y_SLOPE)
+    # print(X_SLOPE)
+    # print(Y_SLOPE)
 
-    plot = [HEIGHT][WIDTH]uint64{}
+    plot = [[0 for x in range(WIDTH)] for y in range(HEIGHT)]
 
-    for py := 0; py < int(HEIGHT); py++ {
-        for px := 0; px < int(WIDTH); px++ {
-            var x0 float64 = X_SLOPE*float64(px) + X_SCALE_MIN
-            var y0 float64 = Y_SLOPE*float64(py) + Y_SCALE_MIN
-            var x float64 = 0.0
-            var y float64 = 0.0
-            var iteration uint64 = 0
+    for py in range(HEIGHT):
+        for px in range(WIDTH):
+            x0 = X_SLOPE*px + X_SCALE_MIN
+            y0 = Y_SLOPE*py + Y_SCALE_MIN
+            x = 0.0
+            y = 0.0
+            iteration = 0
 
-            for x*x+y*y <= 4.0 & & iteration < MAX_ITER {
-                var x_temp float64 = x*x - y*y + x0
+            while x*x+y*y <= 4.0 and iteration < MAX_ITER:
+                x_temp = x*x - y*y + x0
                 y = 2.0*x*y + y0
                 x = x_temp
-                iteration++
-            }
+                iteration += 1
 
             plot[py][px] = iteration
-        }
-    }
-    return
+
+    return plot
+
+
+main()

@@ -49,19 +49,20 @@ Each language measure the time in seconds to:
 
 Then I write down performances in a result file.
 
-Incoming.
+__Time in seconds.__
 
-| Language | MIN time Mandel. | MAX time Mandel. | **AVG time Mandel.** | MIN time write file | MAX time write file | **AVG time write file** | **Size of compiled exe. (kb)** | Notes |
+| Language | MIN Mandel. | MAX Mandel. | **AVG Mandel.** | MIN write file | MAX write file | **AVG write file** | **Size of compiled (kb)** | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Rust | 0.429 | 3.078 | **2.220** | 0.465 | 3.009 | **1.394** | **173** | Long time to dev and debug |
 | Go | 0.185 | 2.877 | **2.136** | 0.135 | 2.600 | **0.633** | **1516** | Very short dev time |
 | Java | 2.739 | 2.881 | **2.836** | - | - | - | - | Lot of various issues |
-| Javascript on chromium | ... | ... | ... | ... | ... | ... | - | ... |
-| Javascript on node.js | ... | ... | ... | ... | ... | ... | - | ... |
-| Python | ... | ... | ... | ... | ... | ... | - | ... |
-| C | ... | ... | ... | ... | ... | ... | ... | ... | 
-| C++ | ... | ... | ... | ... | ... | ... | ... | ... | 
-| C# | ... | ... | ... | ... | ... | ... | ... | ... | 
+| Python | 180.346 | 189.936 | 185.159 | - | - | - | - | Fast to code, slow to run |
+| Javascript on chromium | 2.300 | 2.595 | 2.492 | - | - | - | - | Fastest to code, runs on browser |
+| Javascript on node.js | 2.495 | 2.593 | 2.544 | - | - | - | - | Same as native JS, fast with npm init |
+| C | ... | ... | ... | ... | ... | ... | ... | ... |
+| C++ | ... | ... | ... | ... | ... | ... | ... | ... |
+| C# | ... | ... | ... | ... | ... | ... | ... | ... |
+
 
 ## How does it work
 
@@ -222,3 +223,95 @@ public static int[][] mandelbrot() {
 
 ### Python
 
+The execution time is too long, I must have missed something with the code.
+The array `plot` is getting slower while it's filled up.
+
+> `python main.py`
+
+```python
+def mandelbrot():
+    MAX_ITER = 1000
+
+    X_SCALE_MIN = -2.0
+    X_SCALE_MAX = 1.0
+    Y_SCALE_MIN = -1.5
+    Y_SCALE_MAX = 1.5
+
+    X_SLOPE = (X_SCALE_MAX - X_SCALE_MIN) / WIDTH
+    Y_SLOPE = (Y_SCALE_MAX - Y_SCALE_MIN) / HEIGHT
+
+    # print(X_SLOPE)
+    # print(Y_SLOPE)
+
+    plot = [[0 for x in range(WIDTH)] for y in range(HEIGHT)]
+
+    for py in range(HEIGHT):
+        for px in range(WIDTH):
+            x0 = X_SLOPE*px + X_SCALE_MIN
+            y0 = Y_SLOPE*py + Y_SCALE_MIN
+            x = 0.0
+            y = 0.0
+            iteration = 0
+
+            while x*x+y*y <= 4.0 and iteration < MAX_ITER:
+                x_temp = x*x - y*y + x0
+                y = 2.0*x*y + y0
+                x = x_temp
+                iteration += 1
+
+            plot[py][px] = iteration
+
+    return plot
+```
+
+### Javascript
+
+The same javascript file is used to run on browser and with node.js.
+I used Chrome, Edge, and TOR browsers to test the time, they shows similar results.
+Node.js running locally is also showing similar results.
+
+For browser, open the `index.html` file.
+
+For node.js,
+
+> `npm start`
+
+```js
+function mandelbrot() {
+    const MAX_ITER = 1000;
+
+    const X_SCALE_MIN = -2.0;
+    const X_SCALE_MAX = 1.0;
+    const Y_SCALE_MIN = -1.5;
+    const Y_SCALE_MAX = 1.5;
+
+    const X_SLOPE = (X_SCALE_MAX - X_SCALE_MIN) / (WIDTH);
+    const Y_SLOPE = (Y_SCALE_MAX - Y_SCALE_MIN) / (HEIGHT);
+
+    console.log(X_SLOPE);
+    console.log(Y_SLOPE);
+
+    let plot = [];
+
+    for (let py = 0; py < HEIGHT; py++) {
+        plot.push([]);
+        for (let px = 0; px < WIDTH; px++) {
+            let x0 = X_SLOPE * px + X_SCALE_MIN;
+            let y0 = Y_SLOPE * py + Y_SCALE_MIN;
+            let x = 0.0;
+            let y = 0.0;
+            let iteration = 0;
+
+            while (x * x + y * y <= 4.0 && iteration < MAX_ITER) {
+                let x_temp = x * x - y * y + x0;
+                y = 2.0 * x * y + y0;
+                x = x_temp;
+                iteration++;
+            }
+
+            plot[py].push(iteration);
+        }
+    }
+    return plot;
+}
+```
