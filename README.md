@@ -37,6 +37,19 @@ for each pixel (Px, Py) on the screen do
 
 ## Results
 
+### Quick results
+
+| **Language** | **Efficiency** |
+| --- | --- |
+| go | 1.000 |
+| rust | 1.039 |
+| javascript | 1.167 |
+| node.js | 1.191 |
+| java | 1.375 |
+| python | 86.685 |
+
+### More details
+
 Each language measure the time to compute the Mandelbrot set.
 Some also measure the time to write a `json` file of result.
 
@@ -49,9 +62,9 @@ __**Time values in seconds**__
 | Rust | 0.429 | 3.078 | **2.220** | 0.465 | 3.009 | **1.394** | **173** | Long time to dev and debug |
 | Go | 0.185 | 2.877 | **2.136** | 0.135 | 2.600 | **0.633** | **1516** | Very short dev time |
 | Java | 2.739 | 2.881 | **2.836** | - | - | - | - | Lot of various issues |
-| Python | 180.346 | 189.936 | 185.159 | - | - | - | - | Fast to code, slow to run |
-| Javascript on chromium | 2.300 | 2.595 | 2.492 | - | - | - | - | Fastest to code, runs on browser |
-| Javascript on node.js | 2.495 | 2.593 | 2.544 | - | - | - | - | Same as native JS, fast with npm init |
+| Python | 180.346 | 189.936 | **185.159** | - | - | - | - | Fast to code, slow to run |
+| Javascript on chromium | 2.300 | 2.595 | **2.492** | - | - | - | - | Fastest to code, runs on browser |
+| Javascript on node.js | 2.495 | 2.593 | **2.544** | - | - | - | - | Same as native JS, fast with npm init |
 | C | ... | ... | ... | ... | ... | ... | ... | ... |
 | C++ | ... | ... | ... | ... | ... | ... | ... | ... |
 | C# | ... | ... | ... | ... | ... | ... | ... | ... |
