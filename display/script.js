@@ -10,10 +10,14 @@ let slope = 255 / maxIter;
 
 // Quadratic function curving 0 to 1000 to 0 to 255 (for pixel color)
 // y = ax²+bx+c with c = 0
+// f(50) = 150
+// let a = -0.00284;
+// let b = 3.142;
+// f(50) = 200
 let a = -0.00284;
 let b = 3.142;
 
-fetch("mandelbrot/javascript.json")
+fetch("mandelbrot/go.json")
     .then(res => res.json())
     .then(data => {
         h = data.length;

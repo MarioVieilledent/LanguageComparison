@@ -5,3 +5,30 @@
 
 *.exe
 *zip
+
+
+
+# SCALA
+/scala/project/target
+/scala/target
+
+/scala/.DS_Store
+/scala/dist/*
+/scala/lib_managed/
+/scala/src_managed/
+/scala/project/boot/
+/scala/project/plugins/project/
+/scala/project/local-plugins.sbt
+/scala/.history
+/scala/.ensime
+/scala/.ensime_cache/
+/scala/.sbt-scripted/
+/scala/local.sbt
+/scala/.bsp
+/scala/.vscode/
+/scala/.bloop/
+/scala/.metals/
+/scala/metals.sbt
+/scala/.idea
+/scala/.idea_modules
+/scala//.worksheet/
