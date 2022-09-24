@@ -41,12 +41,13 @@ for each pixel (Px, Py) on the screen do
 
 | **Language** | **Efficiency** |
 | --- | --- |
-| go | 1.000 |
-| rust | 1.039 |
-| javascript | 1.167 |
-| node.js | 1.191 |
-| java | 1.375 |
-| python | 86.685 |
+| Go | 1.000 |
+| Rust | 1.039 |
+| Scala | 1.164 |
+| Javascript | 1.167 |
+| Node.js | 1.191 |
+| Java | 1.375 |
+| Python | 86.685 |
 
 ### More details
 
@@ -65,9 +66,7 @@ __**Time values in seconds**__
 | Python | 180.346 | 189.936 | **185.159** | - | - | - | - | Fast to code, slow to run |
 | Javascript on chromium | 2.300 | 2.595 | **2.492** | - | - | - | - | Fastest to code, runs on browser |
 | Javascript on node.js | 2.495 | 2.593 | **2.544** | - | - | - | - | Same as native JS, fast with npm init |
-| C | ... | ... | ... | ... | ... | ... | ... | ... |
-| C++ | ... | ... | ... | ... | ... | ... | ... | ... |
-| C# | ... | ... | ... | ... | ... | ... | ... | ... |
+| Scala | 2.487  | 2.441 | 2.530 | ... | ... | ... | ... | ... |
 
 
 ## How does it work
@@ -277,12 +276,6 @@ For browser, open the `index.html` file.
 For node.js,
 
 > `npm start`
-
-To transpile `Typescript` to `Javascript`
-
-> `npm install`
-
-> `npx tsc`
 
 ```js
 function mandelbrot() {

@@ -9,7 +9,9 @@ val HEIGHT: Int = 2000
   val elapsed = System.nanoTime() - start
   println("Time elapsed - Mandlebrot: " + elapsed)
 
-def mandelbrot(): Unit =
+  saveResults(plot)
+
+def mandelbrot(): Array[Array[Int]] =
   val MAX_ITER: Int = 1000
 
   val X_SCALE_MIN: Double = -2.0
@@ -20,25 +22,33 @@ def mandelbrot(): Unit =
   val X_SLOPE: Double = (X_SCALE_MAX - X_SCALE_MIN) / WIDTH.toDouble
   val Y_SLOPE: Double = (Y_SCALE_MAX - Y_SCALE_MIN) / HEIGHT.toDouble
 
+  println(X_SLOPE)
+  println(Y_SLOPE)
+
   var plot = Array.ofDim[Int](HEIGHT, WIDTH)
 
-  for ((subTab, py) <- plot.view.zipWithIndex) {
-    for (px <- subTab) {
-      val x0: Double = X_SLOPE * px.toDouble + X_SCALE_MIN
-      val y0: Double = Y_SLOPE * py.toDouble + Y_SCALE_MIN
-      var x: Double = 0.0
-      var y: Double = 0.0
-      var iteration: Int = 0
+  for(py<-0 to HEIGHT - 1; px<-0 until WIDTH - 1) {
+    val x0: Double = X_SLOPE * px.toDouble + X_SCALE_MIN
+    val y0: Double = Y_SLOPE * py.toDouble + Y_SCALE_MIN
+    var x: Double = 0.0
+    var y: Double = 0.0
+    var iteration: Int = 0
 
-      while (x * x + y * y <= 4.0 && iteration < MAX_ITER) {
-        val x_temp: Double = x * x - y * y + x0
-        y = 2.0 * x * y + y0
-        x = x_temp
-        iteration += 1
-      }
-
-      plot(py)(px) = iteration
+    while (x * x + y * y <= 4.0 && iteration < MAX_ITER) {
+      val x_temp: Double = x * x - y * y + x0
+      y = 2.0 * x * y + y0
+      x = x_temp
+      iteration += 1
     }
 
-    plot
+    plot(py)(px) = iteration
+  }
+
+  plot
+
+def saveResults(plot: Array[Array[Int]]): Unit =
+  for(py<-0 to HEIGHT - 1) {
+    for(px<-0 until WIDTH - 1) {
+
+    }
   }
