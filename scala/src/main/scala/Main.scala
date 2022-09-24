@@ -1,15 +1,21 @@
 import scala.collection.mutable.ListBuffer
+import java.nio.file.{Paths, Files}
+import java.nio.charset.StandardCharsets
 
 val WIDTH: Int = 2000
 val HEIGHT: Int = 2000
 
 @main def hello: Unit =
-  val start = System.nanoTime()
+  var start = System.nanoTime()
   val plot = mandelbrot()
-  val elapsed = System.nanoTime() - start
+  var elapsed = System.nanoTime() - start
   println("Time elapsed - Mandlebrot: " + elapsed)
 
+  start = System.nanoTime()
   saveResults(plot)
+  elapsed = System.nanoTime() - start
+  println("Time elapsed - Writing file: " + elapsed)
+
 
 def mandelbrot(): Array[Array[Int]] =
   val MAX_ITER: Int = 1000
@@ -47,8 +53,16 @@ def mandelbrot(): Array[Array[Int]] =
   plot
 
 def saveResults(plot: Array[Array[Int]]): Unit =
+  var str = "["
   for(py<-0 to HEIGHT - 1) {
+    str += "["
     for(px<-0 until WIDTH - 1) {
-
+      str += plot(py)(px) + ","
     }
+    str.dropRight(1)
+    str += "],"
   }
+  str.dropRight(2)
+  str += "]"
+  Files.write(Paths.get("../display/mandelbrot/scala.json"),
+  str.getBytes(StandardCharsets.UTF_8))
