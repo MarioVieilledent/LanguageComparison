@@ -5,8 +5,8 @@
 
 *.exe
 *zip
-
-
+*.pdb
+*.obj
 
 # SCALA
 /scala/project/target

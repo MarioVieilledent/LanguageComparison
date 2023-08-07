@@ -40,14 +40,14 @@ for each pixel (Px, Py) on the screen do
 ### Quick results
 
 | **Language** | **Efficiency** |
-| --- | --- |
-| Go | 1.000 |
-| Rust | 1.039 |
-| Scala | 1.164 |
-| Javascript | 1.167 |
-| Node.js | 1.191 |
-| Java | 1.375 |
-| Python | 86.685 |
+| ------------ | -------------- |
+| Go           | 1.000          |
+| Rust         | 1.039          |
+| Scala        | 1.164          |
+| Javascript   | 1.167          |
+| Node.js      | 1.191          |
+| Java         | 1.375          |
+| Python       | 86.685         |
 
 ### More details
 
@@ -58,15 +58,16 @@ The results are saved in the `result/results.csv` file.
 
 __**Time values in seconds**__
 
-| Language | MIN Mandel. | MAX Mandel. | **AVG Mandel.** | MIN write file | MAX write file | **AVG write file** | **Size of compiled (kb)** | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Rust | 0.429 | 3.078 | **2.220** | 0.465 | 3.009 | **1.394** | **173** | Long time to dev and debug |
-| Go | 0.185 | 2.877 | **2.136** | 0.135 | 2.600 | **0.633** | **1516** | Very short dev time |
-| Java | 2.739 | 2.881 | **2.836** | - | - | - | - | Lot of various issues |
-| Python | 180.346 | 189.936 | **185.159** | - | - | - | - | Fast to code, slow to run |
-| Javascript on chromium | 2.300 | 2.595 | **2.492** | - | - | - | - | Fastest to code, runs on browser |
-| Javascript on node.js | 2.495 | 2.593 | **2.544** | - | - | - | - | Same as native JS, fast with npm init |
-| Scala | 2.487  | 2.441 | 2.530 | ... | ... | ... | ... | ... |
+| Language               | MIN Mandel. | MAX Mandel. | **AVG Mandel.** | MIN write file | MAX write file | **AVG write file** | **Size of compiled (kb)** | Notes                                 |
+| ---------------------- | ----------- | ----------- | --------------- | -------------- | -------------- | ------------------ | ------------------------- | ------------------------------------- |
+| Rust                   | 0.429       | 3.078       | **2.220**       | 0.465          | 3.009          | **1.394**          | **173**                   | Long time to dev and debug            |
+| Zig                    | 0.000       | 0.000       | 0.000           |                |                |                    |                           | Compile time optimisations            |
+| Go                     | 0.185       | 2.877       | **2.136**       | 0.135          | 2.600          | **0.633**          | **1516**                  | Very short dev time                   |
+| Java                   | 2.739       | 2.881       | **2.836**       | -              | -              | -                  | -                         | Lot of various issues                 |
+| Python                 | 180.346     | 189.936     | **185.159**     | -              | -              | -                  | -                         | Fast to code, slow to run             |
+| Javascript on chromium | 2.300       | 2.595       | **2.492**       | -              | -              | -                  | -                         | Fastest to code, runs on browser      |
+| Javascript on node.js  | 2.495       | 2.593       | **2.544**       | -              | -              | -                  | -                         | Same as native JS, fast with npm init |
+| Scala                  | 2.487       | 2.441       | 2.530           | ...            | ...            | ...                | ...                       | ...                                   |
 
 
 ## How does it work
